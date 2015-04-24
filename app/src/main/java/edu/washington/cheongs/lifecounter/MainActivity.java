@@ -75,7 +75,8 @@ public class MainActivity extends ActionBarActivity {
                 } else  {
                     player1--;
                     player1life.setText("" + player1);
-                    loserString.setText("Player 1 LOSES!");
+                    loserMessage = "PLAYEER 1 LOSES!";
+                    loserString.setText(loserMessage);
                 }
 
             }
@@ -99,11 +100,13 @@ public class MainActivity extends ActionBarActivity {
                     player1-=5;
                     player1life.setText("" + player1);
                     if(player1 <= 0) {
-                        loserString.setText("Player 1 LOSES!");
+                        loserMessage = "PLAYEER 1 LOSES!";
+                        loserString.setText(loserMessage);
                     }
                 } else  {
                     player1-=5;
-                    loserString.setText("Player 1 LOSES!");
+                    loserMessage = "PLAYEER 1 LOSES!";
+                    loserString.setText(loserMessage);
                 }
             }
         });
@@ -115,7 +118,8 @@ public class MainActivity extends ActionBarActivity {
             public void onClick(View v) {
                 if(player2 > 0) {
                     player2++;
-                    player2life.setText("" + player2);
+                    loserMessage = "PLAYEER 2 LOSES!";
+                    loserString.setText(loserMessage);
                 }
             }
         });
@@ -129,7 +133,8 @@ public class MainActivity extends ActionBarActivity {
                 } else  {
                     player2--;
                     player2life.setText("" + player2);
-                    loserString.setText("Player 2 LOSES!");
+                    loserMessage = "PLAYEER 2 LOSES!";
+                    loserString.setText(loserMessage);
                 }
 
             }
@@ -153,12 +158,14 @@ public class MainActivity extends ActionBarActivity {
                     player2-=5;
                     player2life.setText("" + player2);
                     if (player2 <= 0) {
-                        loserString.setText("Player 2 LOSES!");
+                        loserMessage = "PLAYER 2 LOSES!";
+                        loserString.setText(loserMessage);
                     }
                 } else  {
                     player2-=5;
                     player2life.setText("" + player2);
-                    loserString.setText("Player 2 LOSES!");
+                    loserMessage = "PLAYER 2 LOSES!";
+                    loserString.setText(loserMessage);
                 }
             }
         });
@@ -184,7 +191,8 @@ public class MainActivity extends ActionBarActivity {
                 } else  {
                     player3--;
                     player3life.setText("" + player3);
-                    loserString.setText("Player 3 LOSES!");
+                    loserMessage = "PLAYER 3 LOSES!";
+                    loserString.setText(loserMessage);
                 }
 
             }
@@ -208,12 +216,14 @@ public class MainActivity extends ActionBarActivity {
                     player3-=5;
                     player3life.setText("" + player3);
                     if (player3 <= 0) {
-                        loserString.setText("Player 3 LOSES!");
+                        loserMessage = "PLAYER 3 LOSES!";
+                        loserString.setText(loserMessage);
                     }
                 } else  {
                     player3-=5;
                     player3life.setText("" + player3);
-                    loserString.setText("Player 3 LOSES!");
+                    loserMessage = "PLAYER 3 LOSES!";
+                    loserString.setText(loserMessage);
                 }
             }
         });
@@ -240,7 +250,8 @@ public class MainActivity extends ActionBarActivity {
                 } else  {
                     player4--;
                     player4life.setText("" + player4);
-                    loserString.setText("Player 4 LOSES!");
+                    loserMessage = "PLAYER 4 LOSES!";
+                    loserString.setText(loserMessage);
                 }
 
             }
@@ -264,19 +275,17 @@ public class MainActivity extends ActionBarActivity {
                     player4-=5;
                     player4life.setText("" + player4);
                     if (player4 <= 0) {
-                        loserString.setText("Player 4 LOSES!");
+                        loserMessage = "PLAYER 4 LOSES!";
+                        loserString.setText(loserMessage);
                     }
                 } else  {
                     player4-=5;
                     player4life.setText("" + player4);
-                    loserString.setText("Player 4 LOSES!");
+                    loserMessage = "PLAYER 4 LOSES!";
+                    loserString.setText(loserMessage);
                 }
             }
         });
-
-
-
-
 
     }
 
@@ -305,5 +314,24 @@ public class MainActivity extends ActionBarActivity {
     public void buttonOnClick(View v) {
         Button button1 = (Button) v;
 
+    }
+    @Override
+    public void onSaveInstanceState(Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        savedInstanceState.putInt("player1", player1);
+        savedInstanceState.putInt("player2", player2);
+        savedInstanceState.putInt("player3", player3);
+        savedInstanceState.putInt("player4", player4);
+        savedInstanceState.putString("loser", loserMessage);
+    }
+
+    @Override
+    public void onRestoreInstanceState(Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        player1 = savedInstanceState.getInt("player1");
+        player2 = savedInstanceState.getInt("player2");
+        player3 = savedInstanceState.getInt("player3");
+        player4 = savedInstanceState.getInt("player4");
+        loserMessage = savedInstanceState.getString("loser");
     }
 }
