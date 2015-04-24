@@ -6,7 +6,6 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
-import android.widget.EditText;
 import android.widget.TextView;
 
 public class MainActivity extends ActionBarActivity {
@@ -20,6 +19,14 @@ public class MainActivity extends ActionBarActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        if(savedInstanceState != null) {
+            player1 = savedInstanceState.getInt("player1");
+            player2 = savedInstanceState.getInt("player2");
+            player3 = savedInstanceState.getInt("player3");
+            player4 = savedInstanceState.getInt("player4");
+            loserMessage = savedInstanceState.getString("loser");
+        }
 
         final TextView player1life = (TextView) findViewById(R.id.textView2);
         final TextView player2life = (TextView) findViewById(R.id.textView3);
@@ -54,15 +61,14 @@ public class MainActivity extends ActionBarActivity {
         final TextView loserString = (TextView)findViewById(R.id.loserstring);
         loserString.setText(loserMessage);
 
+
+
         // FOR PLAYER 1 ------------------------------------------------------------
         p1up1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(player1 > 0) {
-                    player1++;
-                    player1life.setText("" + player1);
-                }
-
+                player1++;
+                player1life.setText("" + player1);
             }
         });
 
@@ -85,11 +91,8 @@ public class MainActivity extends ActionBarActivity {
         p1up5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(player1 > 0) {
-                    player1+=5;
-                    player1life.setText("" + player1);
-                }
-
+                player1+=5;
+                player1life.setText("" + player1);
             }
         });
 
@@ -116,11 +119,8 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
-                if(player2 > 0) {
-                    player2++;
-                    loserMessage = "PLAYEER 2 LOSES!";
-                    loserString.setText(loserMessage);
-                }
+                player2++;
+                player2life.setText("" + player2);
             }
         });
 
@@ -143,11 +143,8 @@ public class MainActivity extends ActionBarActivity {
         p2up5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(player2 > 0) {
-                    player2+=5;
-                    player2life.setText("" + player2);
-                }
-
+                player2+=5;
+                player2life.setText("" + player2);
             }
         });
 
@@ -175,10 +172,8 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
-                if(player3 > 0) {
-                    player3++;
-                    player3life.setText("" + player3);
-                }
+                player3++;
+                player3life.setText("" + player3);
             }
         });
 
@@ -201,11 +196,8 @@ public class MainActivity extends ActionBarActivity {
         p3up5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(player3 > 0) {
-                    player3+=5;
-                    player3life.setText("" + player3);
-                }
-
+                player3+=5;
+                player3life.setText("" + player3);
             }
         });
 
@@ -234,10 +226,8 @@ public class MainActivity extends ActionBarActivity {
 
             @Override
             public void onClick(View v) {
-                if(player4 > 0) {
-                    player4++;
-                    player4life.setText("" + player4);
-                }
+                player4++;
+                player4life.setText("" + player4);
             }
         });
 
@@ -260,11 +250,8 @@ public class MainActivity extends ActionBarActivity {
         p4up5.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                if(player4 > 0) {
-                    player4+=5;
-                    player4life.setText("" + player4);
-                }
-
+                player4+=5;
+                player4life.setText("" + player4);
             }
         });
 
@@ -311,10 +298,7 @@ public class MainActivity extends ActionBarActivity {
 
         return super.onOptionsItemSelected(item);
     }
-    public void buttonOnClick(View v) {
-        Button button1 = (Button) v;
 
-    }
     @Override
     public void onSaveInstanceState(Bundle savedInstanceState) {
         super.onSaveInstanceState(savedInstanceState);
@@ -334,4 +318,5 @@ public class MainActivity extends ActionBarActivity {
         player4 = savedInstanceState.getInt("player4");
         loserMessage = savedInstanceState.getString("loser");
     }
+
 }
